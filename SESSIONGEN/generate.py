@@ -1,7 +1,7 @@
 from pyrogram.types import Message
 from telethon import TelegramClient
 from pyrogram import Client, filters
-from pyrogram1 import Client as Client1
+from pyrogram import Client as Client1
 from asyncio.exceptions import TimeoutError
 from telethon.sessions import StringSession
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -13,7 +13,7 @@ from pyrogram.errors import (
     SessionPasswordNeeded,
     PasswordHashInvalid
 )
-from pyrogram1.errors import (
+from pyrogram.errors import (
     ApiIdInvalid as ApiIdInvalid1,
     PhoneNumberInvalid as PhoneNumberInvalid1,
     PhoneCodeInvalid as PhoneCodeInvalid1,
@@ -34,25 +34,24 @@ import config
 
 
 
-ask_ques = "**» merhaba ben pyogram botuyum komutlarım aşağıda :**"
+ask_ques = "**☞︎︎︎ ᴄʜᴏᴏsᴇ ᴏɴᴇ ᴛʜᴀᴛ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ sᴇssɪᴏɴ 𖤍 ✔️ **"
 buttons_ques = [
     [
-        InlineKeyboardButton("PYOGRAM V1", callback_data="pyrogram1"),
-        InlineKeyboardButton("PYOGRAM V2", callback_data="pyrogram"),
+        InlineKeyboardButton("𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼 💗", callback_data="pyrogram"),
+        InlineKeyboardButton("𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼 𝚅2 💗", callback_data="pyrogram"),
     ],
     [
-        InlineKeyboardButton("TELEFON", callback_data="telethon"),
+        InlineKeyboardButton("𝚃𝙴𝙻𝙴𝚃𝙷𝙾𝙽 💻", callback_data="telethon"),
     ],
     [
-        InlineKeyboardButton("PYOGRAM BOTU", callback_data="pyrogram_bot"),
-        InlineKeyboardButton("TELEFON BOTU", callback_data="telethon_bot"),
+        InlineKeyboardButton("𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼 𝙱𝙾𝚃 🤖", callback_data="pyrogram_bot"),
+        InlineKeyboardButton("𝚃𝙴𝙻𝙴𝚃𝙷𝙾𝙽 𝙱𝙾𝚃 🤖", callback_data="telethon_bot"),
     ],
 ]
 
-
 gen_button = [
     [
-        InlineKeyboardButton(text="OTURUM ULUŞTUR", callback_data="generate")
+        InlineKeyboardButton(text="𝙶𝙴𝙽𝚁𝙰𝚃𝙴 𝚂𝙴𝚂𝚂𝙸𝙾𝙽 𖤍", callback_data="generate")
     ]
 ]
 
@@ -66,16 +65,16 @@ async def main(_, msg):
 
 async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: bool = False, is_bot: bool = False):
     if telethon:
-        ty = "TELEFON"
+        ty = "𝖳𝖤𝖫𝖤𝖳𝖧𝖮𝖭"
     else:
-        ty = "PYOGRAM"
+        ty = "𝖯𝖸𝖱𝖮𝖦𝖱𝖠𝖬"
         if not old_pyro:
-            ty += " ᴠ2"
+            ty += " 𝖵2"
     if is_bot:
-        ty += "BOT"
-    await msg.reply(f"» başlamaya çalışıyorum **{ty}** OTURUM ULUŞTURULUYOR...")
+        ty += " 𝖡𝖮𝖳"
+    await msg.reply(f"» ᴛʀʏɪɴɢ ᴛᴏ sᴛᴀʀᴛ **{ty}** sᴇssɪᴏɴ ɢᴇɴʀᴀᴛᴏʀ...")
     user_id = msg.chat.id
-    api_id_msg = await bot.ask(user_id, "lütfen gönder **APİ_İD** Devam etmek için.\n\nTıklamak /skip botun API'sini kullanmak için.", filters=filters.text)
+    api_id_msg = await bot.ask(user_id, "ᴘʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ᴀᴘɪ_ɪᴅ** ᴛᴏ ᴘʀᴏᴄᴇᴇᴅ.\n\nᴄʟɪᴄᴋ ᴏɴ /skip 𝖥ғᴏʀ ᴜsɪɴɢ ʙᴏᴛ ᴀᴘɪ.", filters=filters.text)
     if await cancelled(api_id_msg):
         return
     if api_id_msg.text == "/skip":
@@ -85,24 +84,24 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         try:
             api_id = int(api_id_msg.text)
         except ValueError:
-            await api_id_msg.reply("**APİ_İD** LUTFEN APİ İD NUMARASINI ATIN.", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+            await api_id_msg.reply("**𝖠𝖯𝖨_𝖨𝖣** ᴍᴜsᴛ ʙᴇ ᴀɴ ɪɴᴛᴇɢᴇʀ, sᴛᴀʀᴛ ɢᴇɴᴇʀᴀᴛɪɴɢ ʏᴏᴜʀ sᴇssɪᴏɴ ᴀɢᴀɪɴ.", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
             return
-        api_hash_msg = await bot.ask(user_id, "» LÜTFEN APİ HASH NUMARASINİ ATIN **ᴀᴩɪ_ʜᴀsʜ** BAĞLANIN", filters=filters.text)
+        api_hash_msg = await bot.ask(user_id, "☞︎︎︎ ɴᴏᴡ ᴘʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ᴀᴘɪ_ʜᴀsʜ** ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ.", filters=filters.text)
         if await cancelled(api_hash_msg):
             return
         api_hash = api_hash_msg.text
     if not is_bot:
-        t = "» lütfen gönder **telefon numaranızı gönderin** oturumu oluşturmak istediğiniz ülke kodu. \nörnek : `+910000000000`'"
+        t = "☞︎︎︎ » ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ ᴛᴏ ᴘʀᴏᴄᴇᴇᴅ : \nᴇxᴀᴍᴘʟᴇ : `+91 95xxxxxxXX`'"
     else:
-        t = "lütfen gönderin**botun tokeni** baglanmak için.\nörnek : `5432198765:abcdanonymousterabaaplol`'"
+        t = "ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ʙᴏᴛ_ᴛᴏᴋᴇɴ** ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ.\nᴇxᴀᴍᴩʟᴇ : `6810174902:AAGQVElsBPTNe6Rj16miPbCrDGikscfarYY`'"
     phone_number_msg = await bot.ask(user_id, t, filters=filters.text)
     if await cancelled(phone_number_msg):
         return
     phone_number = phone_number_msg.text
     if not is_bot:
-        await msg.reply("» giriş yapmak için tokeni yollayın ...")
+        await msg.reply("» ᴛʀʏɪɴɢ ᴛᴏ sᴇɴᴅ ᴏᴛᴩ ᴀᴛ ᴛʜᴇ ɢɪᴠᴇɴ ɴᴜᴍʙᴇʀ...")
     else:
-        await msg.reply("» Bot token ile giriş yapılmaya çalışılıyor...")
+        await msg.reply("» ᴛʀʏɪɴɢ ᴛᴏ ʟᴏɢɪɴ ᴠɪᴀ ʙᴏᴛ ᴛᴏᴋᴇɴ...")
     if telethon and is_bot:
         client = TelegramClient(StringSession(), api_id, api_hash)
     elif telethon:
@@ -164,7 +163,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
                 if await cancelled(api_id_msg):
                     return
             except (PasswordHashInvalid, PasswordHashInvalidError, PasswordHashInvalid1):
-                await two_step_msg.reply("» gönderdiğiniz şifre yanlış.\n\nlütfen oturumunuzu tekrar oluşturmaya başlayın.", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+                await two_step_msg.reply("» ᴛʜᴇ ᴩᴀssᴡᴏʀᴅ ʏᴏᴜ'ᴠᴇ sᴇɴᴛ ɪs ᴡʀᴏɴɢ.\n\nᴩʟᴇᴀsᴇ sᴛᴀʀᴛ ɢᴇɴᴇʀᴀᴛɪɴɢ ʏᴏᴜʀ sᴇssɪᴏɴ ᴀɢᴀɪɴ.", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
                 return
     else:
         if telethon:
@@ -175,7 +174,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         string_session = client.session.save()
     else:
         string_session = await client.export_session_string()
-    text = f"**sizin {ty} oturum dizisi** \n\n`{string_session}` \n\n**oturumu oluşturan :** @kumsaloturumbot\n🍒 **not :** bunu arkadaşınızla paylaşmayın ve katılmaya çekinmeyin @kumsalmuzikk 🥺"
+    text = f"**ᴛʜɪs ɪs ʏᴏᴜʀ {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴʀᴀᴛᴇᴅ ʙʏ :[𝙹𝙰𝚁𝚅𝙸𝚂](https://t.me/Strings_Gen_Robot) ᴡᴀʀɴɪɴɢ :** ᴅᴏɴᴛ sʜᴀʀᴇ ᴡɪᴛʜ ᴀɴʏᴏɴᴇ ᴇᴠᴇɴ ɪғ ᴡɪᴛʜ ʏᴏᴜʀ ɢғ 🏴‍☠️"
     try:
         if not is_bot:
             await client.send_message("me", text)
@@ -184,21 +183,20 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
     except KeyError:
         pass
     await client.disconnect()
-    await bot.send_message(msg.chat.id, "» sᴜᴄᴄᴇssғᴜʟʟʏ ɢᴇɴᴇʀᴀᴛᴇᴅ ʏᴏᴜʀ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\nᴩʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇs ᴛᴏ ɢᴇᴛ ɪᴛ ! \n\n**ᴀ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @BRANDED_PAID_CC 🥺".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
-                        
+    await bot.send_message(msg.chat.id, "sᴜᴄᴄᴇssғᴜʟʟʏ ɢᴇɴᴇʀᴀᴛᴇᴅ ʏᴏᴜʀ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\nᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇs ғᴏʀ ɢᴇᴛᴛɪɴɢ ɪᴛ.\n\nᴀ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ [𝙹𝙰𝚁𝚅𝙸𝚂](https://t.me/JARVIS_V2)".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
 
 
 async def cancelled(msg):
     if "/cancel" in msg.text:
-        await msg.reply("**» devam eden dize oluşturma sürecini iptal etti !**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("**» ᴄᴀɴᴄᴇʟʟᴇᴅ ᴛʜᴇ ᴏɴɢᴏɪɴɢ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛɪᴏɴ ᴩʀᴏᴄᴇss !**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
         return True
     elif "/restart" in msg.text:
-        await msg.reply("**» bu bot sizin için başarıyla yeniden başlatıldı !**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("**» sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇsᴛᴀʀᴛᴇᴅ ᴛʜɪs ʙᴏᴛ ғᴏʀ ʏᴏᴜ !**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
         return True
     elif "/skip" in msg.text:
         return False
     elif msg.text.startswith("/"):  # Bot Commands
-        await msg.reply("**» Devam eden dize oluşturma süreci iptal edildi  !**", quote=True)
+        await msg.reply("**» ᴄᴀɴᴄᴇʟʟᴇᴅ ᴛʜᴇ ᴏɴɢᴏɪɴɢ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛɪᴏɴ ᴩʀᴏᴄᴇss !**", quote=True)
         return True
     else:
         return False
