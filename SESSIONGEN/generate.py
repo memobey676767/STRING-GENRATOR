@@ -124,7 +124,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         await msg.reply("» siz **ᴀᴩɪ_ɪᴅ** ve **ᴀᴩɪ_ʜᴀsʜ** kombinasyon telegram uygulamaları sistemiyle eşleşmiyor. \n\nLütfen oturumunuzu tekrar oluşturmaya başlayın.", reply_markup=InlineKeyboardMarkup(gen_button))
         return
     except (PhoneNumberInvalid, PhoneNumberInvalidError, PhoneNumberInvalid1):
-        await msg.reply("» ᴛʜᴇ **ᴩʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** gönderdiğiniz dosyalar herhangi bir telegram hesabına ait değildir.
+        await msg.reply("» ᴛʜᴇ **ᴩʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** gönderdiğiniz dosyalar herhangi bir telegram hesabına ait değildir".
 \n\nLütfen oturumunuzu tekrar oluşturmaya başlayın.", reply_markup=InlineKeyboardMarkup(gen_button))
         return
     try:
